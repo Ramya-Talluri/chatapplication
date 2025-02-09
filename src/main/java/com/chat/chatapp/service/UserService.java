@@ -1,0 +1,46 @@
+package com.chat.chatapp.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.chat.chatapp.Model.User;
+import com.chat.chatapp.Repository.UserRepository;
+
+@Service
+public class UserService {
+	   private final UserRepository userRepository;
+	  @Autowired
+	    public UserService(UserRepository userRepository) {
+	        this.userRepository = userRepository;
+	    }
+
+    // Method to register a new user
+    public User registerUser(User user) {
+        // Add any validation or encryption logic (e.g., password hashing) here
+    	
+        return userRepository.save(user);
+    }
+
+    // Method to find a user by their email
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    // Method to delete a user by their ID
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
+    }
+
+    // Method to validate login (could include password matching logic)
+    public boolean login(String email, String password) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent() && user.get().getPassword().equals(password)) {
+            return true;  // In a real app, you would hash the password and compare
+        }
+        return false;
+    }
+
+    // Other business logic methods related to users can go here
+}
