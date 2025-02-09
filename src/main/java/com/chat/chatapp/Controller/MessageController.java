@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chat.chatapp.Exception.ChatNotFoundException;
 import com.chat.chatapp.Model.Message;
 import com.chat.chatapp.service.MessageService;
 
@@ -21,10 +22,17 @@ public class MessageController {
     private MessageService messageService;
 
     @PostMapping("/send")
-    public ResponseEntity<?> sendMessage(@RequestParam Long senderId, @RequestParam Long chatId, @RequestParam String content) {
-        Message message = messageService.sendMessage(senderId, chatId, content);
-        return ResponseEntity.status(HttpStatus.CREATED).body(message);
+    public ResponseEntity<?> sendMessage(@RequestParam Long senderId, @RequestParam Long chatId, @RequestParam String content)  {
+        try {
+            Message message = messageService.sendMessage(senderId, chatId, content);
+            return ResponseEntity.status(HttpStatus.CREATED).body(message);
+        } 
+       
+        catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+}
     }
+
 
     @PostMapping("/read/{messageId}")
     public ResponseEntity<?> markMessageAsRead(@PathVariable Long messageId) {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.chat.chatapp.Exception.ChatNotFoundException;
 import com.chat.chatapp.Model.Chat;
 import com.chat.chatapp.Model.Message;
 import com.chat.chatapp.Model.User;
@@ -27,7 +28,8 @@ public class MessageService {
 
     public Message sendMessage(Long senderId, Long chatId, String content) {
         User sender = userRepository.findById(senderId).orElseThrow(() -> new RuntimeException("Sender not found"));
-        Chat chat = chatRepository.findById(chatId).orElseThrow(() -> new RuntimeException("Chat not found"));
+        Chat chat = chatRepository.findById(chatId)
+                .orElseThrow(() -> new ChatNotFoundException("Chat with id " + chatId + " not found"));
 
         Message message = new Message();
         message.setSender(sender);

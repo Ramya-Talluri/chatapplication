@@ -41,6 +41,10 @@
     <artifactId>spring-security-config</artifactId>
      <!-- Update this version if necessary -->
 </dependency>
+ <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 <dependency>
     <groupId>jakarta.servlet</groupId>
     <artifactId>jakarta.servlet-api</artifactId>
@@ -76,7 +80,12 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
+	<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.26</version> <!-- Ensure you're using the latest compatible version -->
+</dependency>
+
 	</dependencies>
 
 	<build>

@@ -5,11 +5,9 @@ public class LoginRequest {
     private String email;
     private String password;
 
-    // Default constructor (for deserialization from JSON)
     public LoginRequest() {
     }
 
-    // Constructor with parameters
     public LoginRequest(String email, String password) {
         this.email = email;
         this.password = password;

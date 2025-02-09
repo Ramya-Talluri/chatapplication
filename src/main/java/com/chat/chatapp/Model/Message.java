@@ -60,5 +60,4 @@ public class Message {
     private boolean isRead;
     private LocalDateTime timestamp;
 
-    // getters and setters
 }

@@ -15,7 +15,7 @@ public class WebSecurityConfig {
         http
             .csrf().disable()  // Disable CSRF for simplicity (disable for APIs, but do it carefully)
             .authorizeRequests()
-                .requestMatchers("/auth/signup", "/auth/login").permitAll()  // Allow signup and login without authentication
+                .requestMatchers("/auth/signup", "/auth/login", "/auth/logout", "/messages/send", "/chats/start", "/messages/read/{messageId}", "/messages/unread/{userId}").permitAll()  // Allow signup and login without authentication
                 .anyRequest().authenticated()  // Require authentication for all other requests
             .and()
             .formLogin().disable();  // Disable the default login page (for custom auth handling)

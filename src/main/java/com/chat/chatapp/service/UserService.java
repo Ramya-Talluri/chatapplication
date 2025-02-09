@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.chat.chatapp.Model.User;
 import com.chat.chatapp.Repository.UserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserService {
 	   private final UserRepository userRepository;
@@ -16,11 +18,9 @@ public class UserService {
 	        this.userRepository = userRepository;
 	    }
 
-    // Method to register a new user
+	  @Transactional
     public User registerUser(User user) {
-        // Add any validation or encryption logic (e.g., password hashing) here
-    	
-        return userRepository.save(user);
+         return userRepository.save(user);
     }
 
     // Method to find a user by their email

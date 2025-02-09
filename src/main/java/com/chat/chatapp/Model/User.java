@@ -7,11 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "\"user\"")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	   @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
 
     private String username;
     private String password;
@@ -48,5 +48,4 @@ public class User {
 		this.isActive = isActive;
 	}
 
-    // getters and setters
 }

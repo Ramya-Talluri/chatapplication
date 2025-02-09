@@ -24,12 +24,13 @@ public class AuthController {
     public ResponseEntity<?> signup(@RequestBody User user) {
     	
         userService.registerUser(user);
+        System.out.println("User ID after save: " + user.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        // Handle login here using Spring Security
+       
         return ResponseEntity.ok("Logged in");
     }
 

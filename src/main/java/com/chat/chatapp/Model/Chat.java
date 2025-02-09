@@ -1,6 +1,7 @@
 package com.chat.chatapp.Model;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -10,10 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Chat {
@@ -32,7 +29,6 @@ public class Chat {
 
     private LocalDateTime createdAt;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
